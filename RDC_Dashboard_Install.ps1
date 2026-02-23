@@ -118,7 +118,7 @@ Write-OK "Icons ready."
 
 # ── Launcher script ───────────────────────────────────────────
 Write-Step "Creating launcher..."
-$LauncherContent = "@echo off`ncd /d `"$InstallDir`"`nstart `"`" `"$PythonW`" `"$InstallDir\src\rdc_dashboard.py`""
+$LauncherContent = "@echo off`r`ncd /d `"$InstallDir`"`r`nset QT_QPA_PLATFORM_PLUGIN_PATH=`"$VenvDir\Lib\site-packages\PyQt6\Qt6\plugins\platforms`"`r`nstart `"`" `"$VenvDir\Scripts\python.exe`" `"$InstallDir\src\rdc_dashboard.py`"`r`n"
 Set-Content -Path $Launcher -Value $LauncherContent -Encoding ASCII
 
 # ── Desktop shortcut ──────────────────────────────────────────
@@ -171,7 +171,7 @@ Write-Host ""
 
 $Launch = Read-Host " Launch RDC Dashboard now? (Y/N)"
 if ($Launch -match "^[Yy]") {
-    Start-Process $Launcher
+    Start-Process "cmd.exe" -ArgumentList "/c `"$Launcher`"" -WorkingDirectory $InstallDir
 }
 
 Write-Host ""
