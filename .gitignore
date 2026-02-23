@@ -1,9 +1,27 @@
+# Python
 venv/
+build_venv/
 __pycache__/
 *.pyc
 *.pyo
+
+# PyInstaller artifacts (generated, not committed)
+dist/
+build/rdc_dashboard/
+build/rdc_dashboard.pkg
+
+# macOS
 .DS_Store
+icon.icns
+
+# Windows
 Thumbs.db
-*.log
+
+# App state
 settings.json
 mru.json
+*.log
+
+# Editor
+.vscode/
+*.swp
